@@ -7,7 +7,7 @@ import productRoutes from "./routes/productRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import dotenv from "dotenv";
 import connectDB from "./db.js";
-
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -35,6 +35,7 @@ app.use('/api/users', userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
+app.use(cookieParser());
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
