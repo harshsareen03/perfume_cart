@@ -8,7 +8,8 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import dotenv from "dotenv";
 import connectDB from "./db.js";
 import cookieParser from 'cookie-parser';
-
+// import orderRoutes from './routes/orderRoutes.js';
+import orderRoutes from './routes/orderRoutes.js'
 dotenv.config();
 
 const port = process.env.PORT || 8080;
@@ -31,11 +32,12 @@ app.get("/api/products/:id", (req, res) => {
 });
 app.use('/api/users', userRoutes);
 
-
+app.use('/api/orders', orderRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
 app.use(cookieParser());
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });

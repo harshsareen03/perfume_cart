@@ -18,7 +18,10 @@ import { Provider } from "react-redux";
 import CartScreen from "./components/pages/CartScreen";
 import LoginScreen from "./components/pages/LoginScreen";
 import Registerscreen from "./components/pages/Registerscreen";
-
+import ShippingScreen from "./components/pages/ShippingScreen";
+import PlaceOrderScreen from "./components/pages/PlaceOrderScreen";
+import PaymentScreen from "./components/pages/PaymentScreen";
+import PrivateRoute from "./components/PrivateRoute"; 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -27,6 +30,13 @@ const router = createBrowserRouter(
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<Registerscreen />} />
+      <Route path='' element={<PrivateRoute />}>
+        <Route path='/shipping' element={<ShippingScreen />} />
+        <Route path='/payment' element={<PaymentScreen />} />
+        <Route path='/placeorder' element={<PlaceOrderScreen />} />
+      </Route>
+
+      
     </Route>
   )
 );
